@@ -4,12 +4,14 @@ var imageGenerator;
 var arrayGenerator;
 var picArray = ["assets/images/penguin.jpeg", "assets/images/bane.jpg", "assets/images/ivy.jpg", "assets/images/szasz.jpg"];
 var counter = 0;
+var clicks = 0;
 var wins = 0;
 var lose = 0;
 
 gameReset();
 function gameReset(){
     counter = 0;
+    clicks = 0;
     numberOptions =[];
     $("#userNumber").empty();
     $("#pictures").empty();
@@ -37,27 +39,32 @@ function gameReset(){
         $("#pictures").append(imageGenerator);
 
     };
+
+    $(".image").on("click", function() {
+        clicks++;
+        $("#click-counter").text(clicks);
+        var imageValue = ($(this).attr("data-value"));
+    
+        imageValue = parseInt(imageValue);
+    
+        counter += imageValue;
+        console.log(counter);
+    
+        $("#userNumber").text(counter);
+        if(counter === targetNumber){
+            wins++;
+            $("#win-lose").text("You Won!")
+            $("#wins").text(wins);
+            gameReset();
+        }
+    
+        else if(counter > targetNumber){
+            lose++;
+            $("#win-lose").text("You Lost!")
+            $("#losses").text(lose);
+            gameReset();
+        }
+    });
 };
 
 
-$(".image").on("click", function() {
-    var imageValue = ($(this).attr("data-value"));
-
-    imageValue = parseInt(imageValue);
-
-    counter += imageValue;
-    console.log(counter);
-
-    $("#userNumber").text(counter);
-    if(counter === targetNumber){
-        wins++;
-        $("#wins").text(wins);
-        gameReset();
-    }
-
-    else if(counter > targetNumber){
-        lose++;
-        $("#losses").text(lose);
-        gameReset();
-    }
-});
