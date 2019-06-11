@@ -1,3 +1,4 @@
+// Global Variables
 var targetNumber;
 var numberOptions = [];
 var imageGenerator;
@@ -16,10 +17,12 @@ function gameReset(){
     $("#userNumber").empty();
     $("#pictures").empty();
 
+    // Generates the random target number
     targetNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
     console.log(targetNumber);
     $("#number-to-guess").text(targetNumber);
     
+    // Generates the random numbers for each of the pictures
     while(numberOptions.length < 4 ){
         arrayGenerator = Math.floor(Math.random() * (12 - 1 + 1) + 1);
         if(numberOptions.indexOf(arrayGenerator) < 0)
@@ -27,6 +30,7 @@ function gameReset(){
         console.log(numberOptions);
     }
 
+    // Adds images into an empty div and assigns values to them
     for(i = 0; i < numberOptions.length; i++){
         imageGenerator = $("<img>");
         
@@ -40,6 +44,7 @@ function gameReset(){
 
     };
 
+    // The click function that allows you to play the game and check for win conditions being met.
     $(".image").on("click", function() {
         clicks++;
         $("#click-counter").text(clicks);
