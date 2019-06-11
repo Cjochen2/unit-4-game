@@ -1,5 +1,25 @@
+body{
+    background-image: url("../images/batman.jpg");
+    background-repeat: no-repeat;
+    
+}
+
+p{
+    font-size: 20px;
+}
+
 .image {
     height: 200px;
     width: 200px;
-    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.jumbotron {
+    background-image: url("../images/batman1.jpg");
+    background-size: 100% 100%;
+    margin-left: 25%;
+}
+
+#winbox {
+    width:15%;
 }
