@@ -25,8 +25,9 @@ function gameReset(){
     // Generates the random numbers for each of the pictures
     while(numberOptions.length < 4 ){
         arrayGenerator = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-        if(numberOptions.indexOf(arrayGenerator) < 0)
+        if(numberOptions.indexOf(arrayGenerator) < 0){
         numberOptions.push(arrayGenerator);
+        }
         console.log(numberOptions);
     }
 
